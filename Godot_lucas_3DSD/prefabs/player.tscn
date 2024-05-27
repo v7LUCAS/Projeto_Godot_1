@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://boich71dygnpw"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_o6guv"]
+[ext_resource type="Texture2D" uid="uid://cygv6va07a827" path="res://assets/player_idle-01.png" id="1_pa75f"]
+[ext_resource type="Texture2D" uid="uid://pprymfll6xm8" path="res://assets/player_idle-02.png" id="2_4rkoe"]
+[ext_resource type="Texture2D" uid="uid://2hytw5mf332" path="res://assets/player_idle-03.png" id="3_5rmy3"]
+[ext_resource type="Texture2D" uid="uid://ders0i18yuvii" path="res://assets/player_move-01.png" id="4_wgc5i"]
+[ext_resource type="Texture2D" uid="uid://ddhvkm02crdyg" path="res://assets/player_move-02.png" id="5_hn3v2"]
+[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://assets/player_down-01.png" id="6_h1rv2"]
+[ext_resource type="Texture2D" uid="uid://h272s26e08hc" path="res://assets/player_down-02.png" id="7_4nkun"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjywl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pa75f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4rkoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5rmy3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wgc5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hn3v2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h1rv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4nkun")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wgc5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hn3v2")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bunjb"]
+radius = 47.0425
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_o6guv")
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yjywl")
+animation = &"move"
+autoplay = "idle"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_bunjb")
